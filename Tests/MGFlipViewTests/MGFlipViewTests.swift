@@ -1,5 +1,5 @@
 import XCTest
-@testable import FlipView
+@testable import MGFlipView
 
 final class MGFlipViewTests: XCTestCase {
   func testExample() {
