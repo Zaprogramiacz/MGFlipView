@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FlipView<Content: View>: View {
+struct MGFlipView<Content: View>: View {
 
   public init(@ViewBuilder frontView: @escaping () -> Content,
               @ViewBuilder backView: @escaping () -> Content,
