@@ -1,4 +1,4 @@
-struct AnimationDescription {
+public struct AnimationDescription {
   let type: AnimationType
   let duration: Double
 }
