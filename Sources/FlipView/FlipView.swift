@@ -1,3 +1,3 @@
 struct FlipView {
-    var text = "Hello, World!"
+  var text = "Hello, World!"
 }
