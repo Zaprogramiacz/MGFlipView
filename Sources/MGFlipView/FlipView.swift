@@ -1,9 +1,9 @@
 import SwiftUI
 
-public struct FlipView<Content: View>: View {
+public struct FlipView<ContentFront: View, ContentBack: View>: View {
 
-  public init(@ViewBuilder frontView: @escaping () -> Content,
-              @ViewBuilder backView: @escaping () -> Content,
+  public init(@ViewBuilder frontView: @escaping () -> ContentFront,
+              @ViewBuilder backView: @escaping () -> ContentBack,
                            fliped: Binding<Bool>,
                            flipAxis: FlipAxis = .x,
                            animation: AnimationDescription = .default) {
@@ -14,8 +14,8 @@ public struct FlipView<Content: View>: View {
     self.animation = animation
   }
 
-  let frontView: () -> Content
-  let backView: () -> Content
+  let frontView: () -> ContentFront
+  let backView: () -> ContentBack
   let flipAxis: FlipAxis
   let animation: AnimationDescription
 
