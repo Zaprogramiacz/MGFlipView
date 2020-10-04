@@ -1,7 +1,7 @@
 import XCTest
 
-import FlipViewTests
+import MGFlipViewTests
 
 var tests = [XCTestCaseEntry]()
-tests += FlipViewTests.allTests()
+tests += MGFlipViewTests.allTests()
 XCTMain(tests)

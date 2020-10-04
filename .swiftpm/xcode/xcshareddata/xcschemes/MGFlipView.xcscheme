@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FlipView"
-               BuildableName = "FlipView"
-               BlueprintName = "FlipView"
+               BlueprintIdentifier = "MGFlipView"
+               BuildableName = "MGFlipView"
+               BlueprintName = "MGFlipView"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FlipViewTests"
-               BuildableName = "FlipViewTests"
-               BlueprintName = "FlipViewTests"
+               BlueprintIdentifier = "MGFlipViewTests"
+               BuildableName = "MGFlipViewTests"
+               BlueprintName = "MGFlipViewTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FlipViewTests"
-               BuildableName = "FlipViewTests"
-               BlueprintName = "FlipViewTests"
+               BlueprintIdentifier = "MGFlipViewTests"
+               BuildableName = "MGFlipViewTests"
+               BlueprintName = "MGFlipViewTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -74,9 +74,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FlipView"
-            BuildableName = "FlipView"
-            BlueprintName = "FlipView"
+            BlueprintIdentifier = "MGFlipView"
+            BuildableName = "MGFlipView"
+            BlueprintName = "MGFlipView"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

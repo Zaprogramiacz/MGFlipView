@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-  name: "FlipView",
+  name: "MGFlipView",
   platforms: [.iOS(.v13), .macOS(.v10_15), .tvOS(.v13), .watchOS(.v6)],
-  products: [.library(name: "FlipView", targets: ["FlipView"])],
+  products: [.library(name: "MGFlipView", targets: ["MGFlipView"])],
   dependencies: [],
   targets: [
-    .target(name: "FlipView", dependencies: []),
-    .testTarget(name: "FlipViewTests", dependencies: ["FlipView"])
+    .target(name: "MGFlipView", dependencies: []),
+    .testTarget(name: "MGFlipViewTests", dependencies: ["MGFlipView"])
   ]
 )
