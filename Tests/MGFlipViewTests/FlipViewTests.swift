@@ -1,7 +1,7 @@
 import XCTest
 @testable import MGFlipView
 
-final class MGFlipViewTests: XCTestCase {
+final class FlipViewTests: XCTestCase {
   func testExample() {
     XCTAssert(true == true)
   }
