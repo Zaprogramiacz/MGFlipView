@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FlipView<Content: View>: View {
+public struct FlipView<Content: View>: View {
 
   public init(@ViewBuilder frontView: @escaping () -> Content,
               @ViewBuilder backView: @escaping () -> Content,
@@ -21,7 +21,7 @@ struct FlipView<Content: View>: View {
 
   @Binding var fliped: Bool
 
-  var body: some View {
+  public var body: some View {
     ZStack {
       frontView()
         .rotation3DEffect(.init(radians: fliped ? (.pi / 2) : 0), axis: flipAxis.value)
@@ -30,14 +30,6 @@ struct FlipView<Content: View>: View {
         .rotation3DEffect(.init(radians: fliped ? 0 : -.pi / 2), axis: flipAxis.value)
         .animation(animation.type.back(duration: animation.duration / 2).delay(fliped ? animation.duration / 2 : 0))
     }
-  }
-
-}
-
-private extension AnimationDescription {
-
-  static var `default`: AnimationDescription {
-    .init(type: .linear, duration: 0.25)
   }
 
 }
