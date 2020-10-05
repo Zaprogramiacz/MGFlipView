@@ -76,7 +76,7 @@ private extension FlipAxis {
 private extension Double {
 
   var closeValue: Double {
-    self - pow(10, -30)
+    self - pow(10, -10)
   }
 
 }
