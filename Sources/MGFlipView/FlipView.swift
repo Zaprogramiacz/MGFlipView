@@ -24,10 +24,10 @@ public struct FlipView<ContentFront: View, ContentBack: View>: View {
   public var body: some View {
     ZStack {
       frontView()
-        .rotation3DEffect(.init(radians: fliped ? (.pi / 2) : 0), axis: flipAxis.value)
+        .rotation3DEffect(.init(radians: fliped ? (.pi / 2).closeValue : 0.closeValue), axis: flipAxis.value)
         .animation(animation.type.front(duration: animation.duration / 2).delay(fliped ? 0 : animation.duration / 2))
       backView()
-        .rotation3DEffect(.init(radians: fliped ? 0 : -.pi / 2), axis: flipAxis.value)
+        .rotation3DEffect(.init(radians: fliped ? 0.closeValue : (-.pi / 2).closeValue), axis: flipAxis.value)
         .animation(animation.type.back(duration: animation.duration / 2).delay(fliped ? animation.duration / 2 : 0))
     }
   }
@@ -69,6 +69,14 @@ private extension FlipAxis {
     case .custom(let x, let y):
       return (x: x, y: y, z: 0)
     }
+  }
+
+}
+
+private extension Double {
+
+  var closeValue: Double {
+    self - .leastNonzeroMagnitude
   }
 
 }
