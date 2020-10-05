@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		4755D830252B93990007195E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4755D82F252B93990007195E /* ContentView.swift */; };
 		4755D832252B939A0007195E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4755D831252B939A0007195E /* Assets.xcassets */; };
 		4755D835252B939A0007195E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4755D834252B939A0007195E /* Preview Assets.xcassets */; };
+		4755D8DC252BA23B0007195E /* MGFlipView in Frameworks */ = {isa = PBXBuildFile; productRef = 4755D8DB252BA23B0007195E /* MGFlipView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4755D8DC252BA23B0007195E /* MGFlipView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +40,7 @@
 			children = (
 				4755D82C252B93990007195E /* IOSExample */,
 				4755D82B252B93990007195E /* Products */,
+				4755D8DA252BA23B0007195E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +72,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4755D8DA252BA23B0007195E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,6 +95,9 @@
 			dependencies = (
 			);
 			name = IOSExample;
+			packageProductDependencies = (
+				4755D8DB252BA23B0007195E /* MGFlipView */,
+			);
 			productName = IOSExample;
 			productReference = 4755D82A252B93990007195E /* IOSExample.app */;
 			productType = "com.apple.product-type.application";
@@ -328,6 +341,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4755D8DB252BA23B0007195E /* MGFlipView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MGFlipView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4755D822252B93990007195E /* Project object */;
 }
