@@ -8,7 +8,7 @@
 
 
 
-## Usage
+## Docs
 
 `FlipView` takes 5 arguments:
 
