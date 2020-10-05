@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473A8E1D252BBD0D009264D0 /* MGFlipView in Frameworks */ = {isa = PBXBuildFile; productRef = 473A8E1C252BBD0D009264D0 /* MGFlipView */; };
 		4755D86A252B94C00007195E /* WatchOSExample WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4755D869252B94C00007195E /* WatchOSExample WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4755D86F252B94C10007195E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4755D86E252B94C10007195E /* Assets.xcassets */; };
 		4755D876252B94C10007195E /* WatchOSExample WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4755D875252B94C10007195E /* WatchOSExample WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -78,18 +79,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473A8E1D252BBD0D009264D0 /* MGFlipView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		473A8E1B252BBD0D009264D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4755D85E252B94C00007195E = {
 			isa = PBXGroup;
 			children = (
 				4755D86D252B94C00007195E /* WatchOSExample WatchKit App */,
 				4755D879252B94C10007195E /* WatchOSExample WatchKit Extension */,
 				4755D866252B94C00007195E /* Products */,
+				473A8E1B252BBD0D009264D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +193,9 @@
 			dependencies = (
 			);
 			name = "WatchOSExample WatchKit Extension";
+			packageProductDependencies = (
+				473A8E1C252BBD0D009264D0 /* MGFlipView */,
+			);
 			productName = "WatchOSExample WatchKit Extension";
 			productReference = 4755D875252B94C10007195E /* WatchOSExample WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -549,6 +562,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		473A8E1C252BBD0D009264D0 /* MGFlipView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MGFlipView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4755D85F252B94C00007195E /* Project object */;
 }

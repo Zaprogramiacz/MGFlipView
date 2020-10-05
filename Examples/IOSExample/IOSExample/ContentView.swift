@@ -1,106 +1,91 @@
 import SwiftUI
-
-struct ContentView: View {
-  var body: some View {
-    GameView(itemSize: .init(width: 70, height: 70), fontSize: 20)
-  }
-}
-
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-  }
-}
-#endif
-
-struct Offset: Identifiable {
-  let id = UUID()
-  let x: CGFloat
-  let y: CGFloat
-}
-
-struct GameView: View {
-
-  init(itemSize: CGSize, fontSize: CGFloat) {
-    self.itemSize = itemSize
-    self.fontSize = fontSize
-  }
-
-  let itemSize: CGSize
-  let fontSize: CGFloat
-
-  var body: some View {
-    GeometryReader { geometry in
-      ForEach(generateOffsets(width: geometry.size.width, height: geometry.size.height)) { offset in
-        ItemView(itemSize: itemSize, fontSize: 20, emoji: allEmojis.first!)
-          .offset(x: offset.x, y: offset.y)
-      }
-    }.padding()
-  }
-
-  func generateOffsets(width: CGFloat, height: CGFloat) -> [Offset] {
-    let numberOfColumns = Int(width / itemSize.width)
-    let numberOfRows = Int(height / itemSize.height)
-    var numberOfItems = numberOfColumns * numberOfRows
-    numberOfItems = numberOfItems % 2 == 0 ? numberOfItems : numberOfItems - 1
-
-    let horizaontalSpacing = width / (CGFloat(numberOfColumns) * itemSize.width)
-    let verticalSpacing = height / (CGFloat(numberOfRows) * itemSize.height)
-
-    let startSpacingColumn = (width - (CGFloat(numberOfColumns) * itemSize.width + CGFloat(max(numberOfColumns, numberOfColumns - 1)) * horizaontalSpacing)) / 2
-    let startSpacingRow = (height - (CGFloat(numberOfRows) * itemSize.height + CGFloat(max(numberOfRows, numberOfRows - 1)) * verticalSpacing)) / 2
-
-    var offsets: [Offset] = []
-
-    for column in 0..<numberOfColumns {
-      for row in 0..<numberOfRows {
-        if numberOfItems - 1 >= offsets.count {
-          let offsetX = (CGFloat(column) * itemSize.width + CGFloat(max(column, column - 1)) * horizaontalSpacing) + startSpacingColumn
-          let offsetY = CGFloat(row) * itemSize.height + CGFloat(max(row, row - 1)) * verticalSpacing + startSpacingRow
-          offsets.append(.init(x: offsetX, y: offsetY))
-        }
-      }
-    }
-
-    return offsets
-  }
-
-}
-
 import MGFlipView
 
-struct ItemView: View {
+struct ContentView: View {
 
-  init(itemSize: CGSize, fontSize: CGFloat, emoji: Character) {
-    self.itemSize = itemSize
-    self.fontSize = fontSize
-    self.emoji = emoji
-  }
+  let itemSize = CGSize(width: 120, height: 120)
 
-  let itemSize: CGSize
-  let fontSize: CGFloat
-  let emoji: Character
-
-  @State var flipped = false
+  @State var flipped: Bool = false
 
   var body: some View {
-    FlipView(frontView: {
-      Color.yellow
-        .frame(width: itemSize.width, height: itemSize.height)
-        .cornerRadius(min(itemSize.height, itemSize.width) * 0.25)
-    }, backView: {
-      Text(String(emoji))
-        .font(.system(size: fontSize))
-        .frame(width: itemSize.width, height: itemSize.height)
-        .background(Color.yellow)
-        .cornerRadius(min(itemSize.height, itemSize.width) * 0.25)
-    }, fliped: $flipped)
-      .onTapGesture {
-        flipped.toggle()
+    VStack {
+      HStack {
+        flipView(flipAxis: .x, animationType: .easeIn)
+        flipView(flipAxis: .y, animationType: .easeOut)
       }
+      HStack {
+        flipView(flipAxis: .xy, animationType: .easeInOut)
+        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear)
+      }
+      FlipView(frontView: {
+        Text("?")
+          .foregroundColor(.white)
+          .font(.system(size: 30))
+          .frame(width: itemSize.width, height: itemSize.height)
+          .background(Color.gray)
+          .mask(Circle())
+      }, backView: {
+        Text("🕵🏻‍♂️")
+          .font(.system(size: 30))
+          .frame(width: itemSize.width, height: itemSize.height)
+          .background(Color.yellow)
+          .mask(Circle())
+      }, fliped: $flipped)
+      Button(action: { flipped.toggle() }) {
+        Text("Flip!")
+      }
+    }
+  }
+
+  func flipView(flipAxis: FlipAxis, animationType: AnimationType) -> some View {
+    FlipView(frontView: { cardView(front: true, flipAxis: flipAxis, animationType: animationType) },
+             backView: { cardView(front: false, flipAxis: flipAxis, animationType: animationType) },
+             fliped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: 2))
+  }
+
+  func cardView(front: Bool, flipAxis: FlipAxis, animationType: AnimationType) -> some View {
+    var cardSide = front ? "Front\n" : "Back\n"
+    cardSide += "axis: \(flipAxis.humanReadable)\n"
+    cardSide += "anim: \(animationType.humanReadable)"
+
+    return Text(cardSide)
+      .frame(width: itemSize.width, height: itemSize.height)
+      .background(Color.yellow)
+      .cornerRadius(min(itemSize.width, itemSize.height) * 0.25)
   }
 
 }
 
-let allEmojis = "🧳🌂☂️🧵🧶👓🕶🥽🥼🦺👔👕👖🧣🧤🧥🧦👗👘🥻🩱🩲🩳👙👚👛👜👝🎒👞👟🥾🥿👠👡🩰👢👑👒🎩🎓🧢⛑💄💍💼"
+private extension FlipAxis {
+
+  var humanReadable: String {
+    switch self {
+    case .x:
+      return "x"
+    case .y:
+      return "y"
+    case .xy:
+      return "xy"
+    case .custom(let x, let y):
+      return "x:\(x),y:\(y)"
+    }
+  }
+
+}
+
+private extension AnimationType {
+
+  var humanReadable: String {
+    switch self {
+    case .linear:
+      return "linear"
+    case .easeIn:
+      return "easeIn"
+    case .easeOut:
+      return "easeOut"
+    case .easeInOut:
+      return "easeInOut"
+    }
+  }
+
+}
