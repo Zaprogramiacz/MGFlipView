@@ -43,3 +43,7 @@ public init(@ViewBuilder frontView: @escaping () -> ContentFront,
 Use `https://github.com/Zaprogramiacz/MGFlipView.git` link to add Swift Package to XCode project
 
 ## [License](LICENSE)
+
+MIT License
+
+Copyright (c) 2020 Maciej Gomółka
