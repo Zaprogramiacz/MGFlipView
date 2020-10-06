@@ -18,13 +18,13 @@ The library is distributed via SPM.
 
 `FlipView` takes 5 arguments:
 
-| Argument  | Type                 | Description  |
-| --------- |:--------------------:| ------------ |
-| frontView | () -> View           | Front view builder. Visible if flipped == true. |
-| backView  | () -> View           | Back view builder. Visible if flipped == false. |
-| flipped   | Binding<Bool>        | Binding which gives possiblity to flip the view. |
-| flipAxis  | FlipAxis             | Rotation axis. `FlipAxis` have 4 defined values(`x`, `y`, `xy`, `custom(x: Double, y: Double)`). The custom value gives possiblity to declare your own axis. It has `x` default value when argument is not passed to the FlipView initializer. |
-| animation | AnimationDescription | Defines the animation that takes place when flipping. Animation can be customized by setting duration and timing function (`linear`, `easeIn`, `easeOut`, `easeInOut`). It has `.init(type: .linear, duration: 0.25)` default value when argument is not passed to the FlipView initializer. |
+| Argument  | Type                   | Description  |
+| --------- |:----------------------:| ------------ |
+| frontView | `() -> View`           | Front view builder. Visible if flipped == true. |
+| backView  | `() -> View`           | Back view builder. Visible if flipped == false. |
+| flipped   | `Binding<Bool>`        | Binding which gives possiblity to flip the view. |
+| flipAxis  | `FlipAxis`             | Rotation axis. `FlipAxis` have 4 defined values(`x`, `y`, `xy`, `custom(x: Double, y: Double)`). The custom value gives possiblity to declare your own axis. It has `x` default value when argument is not passed to the FlipView initializer. |
+| animation | `AnimationDescription` | Defines the animation that takes place when flipping. Animation can be customized by setting duration and timing function (`linear`, `easeIn`, `easeOut`, `easeInOut`). It has `.init(type: .linear, duration: 0.25)` default value when argument is not passed to the FlipView initializer. |
 
 ```swift
 public init(@ViewBuilder frontView: @escaping () -> ContentFront,
