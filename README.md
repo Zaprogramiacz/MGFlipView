@@ -6,7 +6,7 @@
 
 ## About
 
-If you are looking for easy way of implement 3D flipping view, you are in right place. MGFlipView allows to create flip view in easy way without worring about flip animation and flip logic. 
+If you are looking for easy way of implement 3D flipping view, you are in right place. MGFlipView allows to create flipping view in easy way without worring about flipping animation and flipping logic. 
 
 The library is written in SwiftUI and it can be used on all platforms (iOS, macOS, watchOS, tvOS). 
 
