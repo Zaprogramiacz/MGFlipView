@@ -10,12 +10,12 @@ struct ContentView: View {
   var body: some View {
     VStack {
       HStack {
-        flipView(flipAxis: .x, animationType: .easeIn)
-        flipView(flipAxis: .y, animationType: .easeOut)
+        flipView(flipAxis: .x, animationType: .easeIn, duration: 2)
+        flipView(flipAxis: .y, animationType: .easeOut, duration: 1.5)
       }
       HStack {
-        flipView(flipAxis: .xy, animationType: .easeInOut)
-        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear)
+        flipView(flipAxis: .xy, animationType: .easeInOut, duration: 1)
+        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear, duration: 0.8)
       }
       FlipView(frontView: {
         Text("?")
@@ -37,10 +37,10 @@ struct ContentView: View {
     }
   }
 
-  func flipView(flipAxis: FlipAxis, animationType: AnimationType) -> some View {
+  func flipView(flipAxis: FlipAxis, animationType: AnimationType, duration: Double) -> some View {
     FlipView(frontView: { cardView(front: true, flipAxis: flipAxis, animationType: animationType) },
              backView: { cardView(front: false, flipAxis: flipAxis, animationType: animationType) },
-             flipped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: 2))
+             flipped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: duration))
   }
 
   func cardView(front: Bool, flipAxis: FlipAxis, animationType: AnimationType) -> some View {
