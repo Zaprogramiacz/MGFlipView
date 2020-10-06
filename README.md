@@ -14,6 +14,10 @@ Examples of usage for all platforms are avaialble after opening `MGFlipView.xcwo
 
 The library is distributed via SPM.
 
+## Preview
+
+![Preview](Examples/flip_view_example.gif)
+
 ## Documentation
 
 `FlipView` takes 5 arguments:
