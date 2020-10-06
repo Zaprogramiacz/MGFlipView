@@ -19,7 +19,7 @@ struct ContentView: View {
         .frame(width: 80, height: 80)
         .background(Color.yellow)
         .mask(Circle())
-    }, fliped: $flipped)
+    }, flipped: $flipped)
     .onTapGesture {
       flipped.toggle()
     }

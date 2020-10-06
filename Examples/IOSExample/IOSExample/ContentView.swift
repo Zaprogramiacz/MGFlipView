@@ -30,7 +30,7 @@ struct ContentView: View {
           .frame(width: itemSize.width, height: itemSize.height)
           .background(Color.yellow)
           .mask(Circle())
-      }, fliped: $flipped)
+      }, flipped: $flipped)
       Button(action: { flipped.toggle() }) {
         Text("Flip!")
       }
@@ -40,7 +40,7 @@ struct ContentView: View {
   func flipView(flipAxis: FlipAxis, animationType: AnimationType) -> some View {
     FlipView(frontView: { cardView(front: true, flipAxis: flipAxis, animationType: animationType) },
              backView: { cardView(front: false, flipAxis: flipAxis, animationType: animationType) },
-             fliped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: 2))
+             flipped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: 2))
   }
 
   func cardView(front: Bool, flipAxis: FlipAxis, animationType: AnimationType) -> some View {

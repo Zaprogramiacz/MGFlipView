@@ -20,7 +20,7 @@ struct ContentView: View {
           .frame(width: 150, height: 150)
           .background(Color.yellow)
           .mask(Circle())
-      }, fliped: $flipped)
+      }, flipped: $flipped)
     }
     Button(action: { flipped.toggle() }) {
       Text("Flip!")
