@@ -6,17 +6,20 @@ public struct FlipView<ContentFront: View, ContentBack: View>: View {
               @ViewBuilder backView: @escaping () -> ContentBack,
                            flipped: Binding<Bool>,
                            flipAxis: FlipAxis = .x,
+                           perspective: CGFloat = 0.5,
                            animation: AnimationDescription = .default) {
     self.frontView = frontView
     self.backView = backView
     self._flipped = flipped
     self.flipAxis = flipAxis
+    self.perspective = perspective
     self.animation = animation
   }
 
   let frontView: () -> ContentFront
   let backView: () -> ContentBack
   let flipAxis: FlipAxis
+  let perspective: CGFloat
   let animation: AnimationDescription
 
   @Binding var flipped: Bool
@@ -24,13 +27,17 @@ public struct FlipView<ContentFront: View, ContentBack: View>: View {
   public var body: some View {
     ZStack {
       frontView()
-        .rotation3DEffect(.init(radians: flipped ? (.pi / 2).closeValue : 0.closeValue), axis: flipAxis.value)
+        .rotation3DEffect(
+          .init(radians: flipped ? (.pi / 2).closeValue : 0.closeValue), axis: flipAxis.value, perspective: perspective
+        )
         .animation(
           animation.type.front(duration: animation.duration / 2, reversed: !flipped)
             .delay(flipped ? 0 : animation.duration / 2)
         )
       backView()
-        .rotation3DEffect(.init(radians: flipped ? 0.closeValue : (-.pi / 2).closeValue), axis: flipAxis.value)
+        .rotation3DEffect(
+          .init(radians: flipped ? 0.closeValue : (-.pi / 2).closeValue), axis: flipAxis.value, perspective: perspective
+        )
         .animation(
          animation.type.back(duration: animation.duration / 2, reversed: !flipped)
           .delay(flipped ? animation.duration / 2 : 0)

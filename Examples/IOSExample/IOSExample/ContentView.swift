@@ -3,19 +3,19 @@ import MGFlipView
 
 struct ContentView: View {
 
-  let itemSize = CGSize(width: 120, height: 120)
+  let itemSize = CGSize(width: 140, height: 140)
 
   @State var flipped: Bool = false
 
   var body: some View {
     VStack {
       HStack {
-        flipView(flipAxis: .x, animationType: .easeIn, duration: 2)
-        flipView(flipAxis: .y, animationType: .easeOut, duration: 1.5)
+        flipView(flipAxis: .x, animationType: .easeIn, duration: 2, perspective: 0.1)
+        flipView(flipAxis: .y, animationType: .easeOut, duration: 1.5, perspective: 0.1)
       }
       HStack {
-        flipView(flipAxis: .xy, animationType: .easeInOut, duration: 1)
-        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear, duration: 0.8)
+        flipView(flipAxis: .xy, animationType: .easeInOut, duration: 1, perspective: 0.1)
+        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear, duration: 0.8, perspective: 0.25)
       }
       FlipView(frontView: {
         Text("?")
@@ -37,16 +37,19 @@ struct ContentView: View {
     }
   }
 
-  func flipView(flipAxis: FlipAxis, animationType: AnimationType, duration: Double) -> some View {
-    FlipView(frontView: { cardView(front: true, flipAxis: flipAxis, animationType: animationType) },
-             backView: { cardView(front: false, flipAxis: flipAxis, animationType: animationType) },
-             flipped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: duration))
+  func flipView(flipAxis: FlipAxis, animationType: AnimationType, duration: Double, perspective: CGFloat) -> some View {
+    FlipView(
+      frontView: { cardView(front: true, flipAxis: flipAxis, animationType: animationType, perspective: perspective) },
+      backView: { cardView(front: false, flipAxis: flipAxis, animationType: animationType, perspective: perspective) },
+      flipped: $flipped, flipAxis: flipAxis, animation: .init(type: animationType, duration: duration)
+    )
   }
 
-  func cardView(front: Bool, flipAxis: FlipAxis, animationType: AnimationType) -> some View {
+  func cardView(front: Bool, flipAxis: FlipAxis, animationType: AnimationType, perspective: CGFloat) -> some View {
     var cardSide = front ? "Front\n" : "Back\n"
     cardSide += "axis: \(flipAxis.humanReadable)\n"
-    cardSide += "anim: \(animationType.humanReadable)"
+    cardSide += "anim: \(animationType.humanReadable)\n"
+    cardSide += "perspective: \(perspective)"
 
     return Text(cardSide)
       .frame(width: itemSize.width, height: itemSize.height)
