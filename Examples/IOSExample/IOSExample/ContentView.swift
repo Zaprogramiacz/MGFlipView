@@ -11,11 +11,11 @@ struct ContentView: View {
     VStack {
       HStack {
         flipView(flipAxis: .x, animationType: .easeIn, duration: 2, perspective: 0.1)
-        flipView(flipAxis: .y, animationType: .easeOut, duration: 1.5, perspective: 0.1)
+        flipView(flipAxis: .y, animationType: .easeOut, duration: 1.5, perspective: 1)
       }
       HStack {
         flipView(flipAxis: .xy, animationType: .easeInOut, duration: 1, perspective: 0.1)
-        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear, duration: 0.8, perspective: 0.25)
+        flipView(flipAxis: .custom(x: 0.1, y: 0.5), animationType: .linear, duration: 0.8, perspective: 1)
       }
       FlipView(frontView: {
         Text("?")
