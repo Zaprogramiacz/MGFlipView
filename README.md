@@ -20,7 +20,7 @@ The library is distributed via SPM.
 
 ## Documentation
 
-`FlipView` takes 5 arguments:
+`FlipView` takes 6 arguments:
 
 | Argument  | Type                   | Description  |
 | --------- |:----------------------:| ------------ |
