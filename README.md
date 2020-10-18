@@ -36,7 +36,8 @@ public init(@ViewBuilder frontView: @escaping () -> ContentFront,
             @ViewBuilder backView: @escaping () -> ContentBack,
                          flipped: Binding<Bool>,
                          flipAxis: FlipAxis = .x,
-                         animation: AnimationDescription = .default) {
+                         perspective: CGFloat = 0.5,
+                         animation: AnimationDescription = .default)
 ```
 
 ## Installation
